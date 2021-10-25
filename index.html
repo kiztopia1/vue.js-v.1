@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ deckName }}</h1>
+        <div class="card">
+            <h2>item</h2>
+            <div>description</div>
+        </div>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const FlashCardApp = {
+            data () {
+                return{
+                    deckName: 'Vue.js Fundamentals'
+                }
+            }
+        };
+        Vue.createApp(FlashCardApp).mount('#app');
+    </script>
+</body>
+</html>
