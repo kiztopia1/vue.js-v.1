@@ -15,8 +15,8 @@
         </div>
         <!-- card -->
         <div @click="front = !front" class="card">
-            <h2 v-if='front' v-text="displayFront"></h2>
-            <p v-else v-html="displayBack"></p>
+            <h2 v-show='front' v-text="displayFront"></h2>
+            <p v-show='!front' v-html="displayBack"></p>
         </div>
         <!-- next button -->
         <div>
