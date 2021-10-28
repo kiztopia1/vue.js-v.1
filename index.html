@@ -13,13 +13,13 @@
             <!-- the v-model will allow us to make the input responsive -->
             title: <input type='text' v-model="deckName">
         </div>
-        <div class="card">
-            <h2 v-text="front ? cards[0].front : '' "></h2>
-            <p v-html="front?  '' : cards[0].back">.</p>
+        <div @click="front = !front" class="card">
+            <h2 v-text="front ? cards[index].front : '' "></h2>
+            <p v-html="front?  '' : cards[index].back">.</p>
         </div>
         <div>
-            <span><a class="btn" href="">prev</a></span>
-            <span><a class="btn" href="">next</a></span>
+            <span class="btn" @click="go(-1)">prev</span>
+            <span class="btn" @click="go(1)">next</span>
 
         </div>
     </div>
@@ -35,9 +35,19 @@
                     deckName: 'Vue.js Fundamentals',
                     cards,
                     front: true,
-                    link: 'kira is the man '
+                    link: 'kira is the man ',
+                    index: 0
+                }
+            },
+            methods :{
+                go (no) {
+                    if ( this.cards[this.index + no]){
+                        this.index = this.index+ no
+                        this.front = true
+                    }
                 }
             }
+            
         };
         const app = Vue.createApp(FlashCardApp).mount('#app');
     </script>
