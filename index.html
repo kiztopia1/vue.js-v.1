@@ -3,30 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel='stylesheet' href="style.css">
+    <title>Flash Card</title>
 </head>
 <body>
     <div id="app">
         <h1 v-text='deckName'></h1>
+        <div>
+            <!-- the v-model will allow us to make the input responsive -->
+            title: <input type='text' v-model="deckName">
+        </div>
         <div class="card">
-            <h2 v-text="flipped ? '' : cards[0].front"></h2>
-            <div v-html="flipped ?  cards[0].back : '' "></div>
+            <h2 v-text="front ? cards[0].front : '' "></h2>
+            <p v-html="front?  '' : cards[0].back">.</p>
+        </div>
+        <div>
+            <span><a class="btn" href="">prev</a></span>
+            <span><a class="btn" href="">next</a></span>
+
         </div>
     </div>
 
     <script src="./data.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./vue.global.js"></script>
+
     <script>
+        const a = ''
         const FlashCardApp = {
             data () {
                 return{
                     deckName: 'Vue.js Fundamentals',
                     cards,
-                    flipped: true,
+                    front: true,
+                    link: 'kira is the man '
                 }
             }
         };
         const app = Vue.createApp(FlashCardApp).mount('#app');
     </script>
+
 </body>
 </html>
