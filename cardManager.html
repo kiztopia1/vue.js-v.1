@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cardManager.css">
+    <title>card manegaer</title>
+</head>
+<body>
+    <div id="app">
+        <div v-for='(card, index) in cards' class="cards">
+            <div v-if='index == editIndex' class="card">
+                <textarea @keydown.enter='editIndex = -1' v-model='card.front' name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div @click='editIndex = index' v-else v-text='card.front' class="card"></div>
+            <div v-html='card.back' class="card"> 
+                
+            </div>
+        </div>
+    </div>
+    <script src="./data.js"></script>
+    <script src='./vue.global.js'></script>
+    <script>
+        const cardManager ={
+            data() {
+                return {
+                    cards,
+                    editIndex:-1
+                }
+                
+            }
+        }
+        Vue.createApp(cardManager).mount('#app');
+    </script>
+</body>
+</html>

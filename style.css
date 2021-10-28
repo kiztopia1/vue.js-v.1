@@ -3,6 +3,7 @@ body{
     padding: 0;
     display: flex;
     text-align: center;
+    background: rgb(110, 145, 190);
 }
 #app{
     background: rgb(110, 145, 190);
