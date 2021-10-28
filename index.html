@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="app">
-        <h1 v-text='deckName'></h1>
+        <h1 v-text='deckName'></h1>{{cardCounter}}
         <div>
             <!-- the v-model will allow us to make the input responsive -->
             title: <input type='text' v-model="deckName">
@@ -22,6 +22,7 @@
             <span class="btn" @click="go(1)">next</span>
 
         </div>
+        <a href="./addCard.html">add card</a>
     </div>
 
     <script src="./data.js"></script>
@@ -37,6 +38,13 @@
                     front: true,
                     link: 'kira is the man ',
                     index: 0
+                }
+            },
+            // this will allow as to add pre calculated values
+            // and we can call them from the template by using '{{ computed function name}}'
+            computed: {
+                cardCounter(){
+                    return this.cards.length
                 }
             },
             methods :{

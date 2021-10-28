@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addCard.css">
+    <link rel="stylesheet" href="style.css">
     <title>addCard</title>
 </head>
 <body>
     <div id="addCard">
         <h1 v-text='deckName'></h1>
-        <form action="post">
-
-        </form>
+            <form action="">
+            <div>
+                <label for="front">front</label>
+                <input type="text" name="front" id="front" v-model="front">
+            </div>
+            <div>
+                <label for="back">back</label>
+                <input type="text" name="back" id="back" v-model="back">
+            </div>
+            <button @click.prevent="go()">add</button>
+            </form>
+        <a href="./index.html">Home page</a>
     </div>
     
     <script src="./data.js"></script>
@@ -20,9 +31,24 @@
         const addCard = {
             data() {
                 return {
-                    deckName:'biology'
+                    deckName:'biology',
+                    front: '',
+                    back: ''
                 }
                 
+            },
+            methods: {
+                go() {
+                    console.log(this.front, this.back)
+                    const card = {
+                        front: this.front,
+                        back: this.back,
+                    }
+                    
+                    cards.push(card)
+                    console.log(cards)
+                    
+                }
             }
         }
         Vue.createApp(addCard).mount('#addCard')
