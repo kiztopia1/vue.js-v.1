@@ -13,15 +13,18 @@
             <!-- the v-model will allow us to make the input responsive -->
             title: <input type='text' v-model="deckName">
         </div>
+        <!-- card -->
         <div @click="front = !front" class="card">
-            <h2 v-text="front ? cards[index].front : '' "></h2>
-            <p v-html="front?  '' : cards[index].back">.</p>
+            <h2 v-if='front' v-text="displayFront"></h2>
+            <p v-else v-html="displayBack"></p>
         </div>
+        <!-- next button -->
         <div>
             <span class="btn" @click="go(-1)">prev</span>
             <span class="btn" @click="go(1)">next</span>
 
         </div>
+
         <a href="./addCard.html">add card</a>
     </div>
 
@@ -44,7 +47,13 @@
             // and we can call them from the template by using '{{ computed function name}}'
             computed: {
                 cardCounter(){
-                    return this.cards.length
+                    return this.cards.length;
+                },
+                displayFront () {
+                    return this.cards[this.index].front;
+                },
+                displayBack () {
+                    return this.cards[this.index].back;
                 }
             },
             methods :{
